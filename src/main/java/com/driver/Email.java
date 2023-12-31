@@ -29,16 +29,12 @@ public class Email {
         if(!oldPassword.equals(newPassword)){
             return;
         }
-        int totalChars = 0;
         boolean isOneCharUpper = false;
         boolean isOneLowerCase = false;
         boolean containsOneDigit = false;
         boolean containsSpecial = false;
         for(int i=0; i<newPassword.length(); i++){
             char ch = newPassword.charAt(i);
-            if(ch >= 'A' && ch <= 'Z'  || ch >= 'a' && ch <= 'z'){
-                totalChars++;
-            }
             if(ch >= 'A' && ch <= 'Z'){
                 isOneCharUpper = true;
             }
@@ -52,8 +48,7 @@ public class Email {
                 containsSpecial = true;
             }
         }
-
-        if(totalChars >= 8 && isOneCharUpper && isOneLowerCase && containsOneDigit && containsSpecial){
+        if(newPassword.length() >= 8 && isOneCharUpper && isOneLowerCase && containsOneDigit && containsSpecial){
             this.password = newPassword;
         }
     }
