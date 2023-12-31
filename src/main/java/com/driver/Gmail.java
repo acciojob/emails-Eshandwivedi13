@@ -1,6 +1,7 @@
 package com.driver;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.*;
 import java.util.Queue;
     class mail{
         Date date;
@@ -30,11 +31,14 @@ public class Gmail extends Email {
         // 1. Each mail in the inbox is distinct.
         // 2. The mails are received in non-decreasing order. This means that the date of a new mail is greater than equal to the dates of mails received already.
         if(inbox.size() == inboxCapacity){
+
             trash.add(inbox.get(0));
             inbox.remove(0);
         }
         mail recievedMail = new mail(date, sender, message);
         inbox.add(recievedMail);
+// Sort the inbox based on date
+        Collections.sort(inbox, Comparator.comparing(m -> m.date));
 
     }
     public void deleteMail(String message){
