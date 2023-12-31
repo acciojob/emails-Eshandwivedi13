@@ -26,7 +26,7 @@ public class Email {
         // 4. It contains at least one digit
         // 5. It contains at least one special character. Any character apart from alphabets and digits is a special character
 
-        if(!oldPassword.equals(newPassword)){
+        if(!oldPassword.equals(newPassword) || oldPassword.length() < 8){
             return;
         }
         boolean isOneCharUpper = false;
@@ -41,7 +41,7 @@ public class Email {
             if(ch >= 'a' && ch <= 'z'){
                 isOneLowerCase = true;
             }
-            if(ch >= '0' && ch <= '9'){
+            if(Character.isDigit(ch)){
                 containsOneDigit = true;
             }
             if(!Character.isLetterOrDigit(ch) ){
