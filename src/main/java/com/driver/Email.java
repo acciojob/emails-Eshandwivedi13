@@ -27,30 +27,37 @@ public class Email {
         // 4. It contains at least one digit
         // 5. It contains at least one special character. Any character apart from alphabets and digits is a special character
 
-        if(!oldPassword.equals(newPassword) || newPassword.length() < 8){
-            return;
+//        if(!oldPassword.equals(newPassword) || newPassword.length() < 8){
+//            return;
+//        }
+//        boolean isOneCharUpper = false;
+//        boolean isOneLowerCase = false;
+//        boolean containsOneDigit = false;
+//        boolean containsSpecial = false;
+//        for(int i=0; i<newPassword.length(); i++){
+//            char ch = newPassword.charAt(i);
+//            if(ch >= 'A' && ch <= 'Z'){
+//                isOneCharUpper = true;
+//            }
+//            if(ch >= 'a' && ch <= 'z'){
+//                isOneLowerCase = true;
+//            }
+//            if(Character.isDigit(ch)){
+//                containsOneDigit = true;
+//            }
+//            if(!Character.isLetterOrDigit(ch) ){
+//                containsSpecial = true;
+//            }
+//        }
+//        if(isOneCharUpper && isOneLowerCase && containsOneDigit && containsSpecial){
+//            this.password = newPassword;
+//        }
+        if (oldPassword.equals(password) && newPassword.length() >= 8) {
+            String passwordRegex = "^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[^A-Za-z0-9]).{8,}$";
+            if (newPassword.matches(passwordRegex)) {
+                password = newPassword;
+            }
         }
-        boolean isOneCharUpper = false;
-        boolean isOneLowerCase = false;
-        boolean containsOneDigit = false;
-        boolean containsSpecial = false;
-        for(int i=0; i<newPassword.length(); i++){
-            char ch = newPassword.charAt(i);
-            if(ch >= 'A' && ch <= 'Z'){
-                isOneCharUpper = true;
-            }
-            if(ch >= 'a' && ch <= 'z'){
-                isOneLowerCase = true;
-            }
-            if(Character.isDigit(ch)){
-                containsOneDigit = true;
-            }
-            if(!Character.isLetterOrDigit(ch) ){
-                containsSpecial = true;
-            }
-        }
-        if(isOneCharUpper && isOneLowerCase && containsOneDigit && containsSpecial){
-            this.password = newPassword;
-        }
+
     }
 }
