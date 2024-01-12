@@ -25,15 +25,6 @@ public class Gmail extends Email {
         inbox = new ArrayList<>();
         trash = new ArrayList<>();
     }
-
-    public ArrayList<mail> getTrash() {
-        return trash;
-    }
-
-    public ArrayList<mail> getInbox() {
-        return inbox;
-    }
-
     public void receiveMail(Date date, String sender, String message){
         // If the inbox is full, move the oldest mail in the inbox to trash and add the new mail to inbox.
         // It is guaranteed that:
@@ -46,7 +37,9 @@ public class Gmail extends Email {
         }
         mail recievedMail = new mail(date, sender, message);
         inbox.add(recievedMail);
+
 // Sort the inbox based on date
+//        Collections.sort(inbox, Comparator.comparing(m -> m.date));
         inbox.sort(Comparator.comparing(m -> m.date));
 
     }
